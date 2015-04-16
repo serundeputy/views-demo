@@ -9,7 +9,6 @@ function my_view_menu() {
     'title' => 'My View',
     'description' => 'Put some content on fp.',
     'page callback' => 'my_view_do_it',
-    /*'page arguments' => array('cmi_ebr_create_form'),*/
     'access callback' => true,
     );
   return $items;
