@@ -1,0 +1,5 @@
+name = My View
+description = Export a view to code.
+package = Custom
+core = 7.x
+dependencies[] = views

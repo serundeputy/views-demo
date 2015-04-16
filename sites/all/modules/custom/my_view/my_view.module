@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ */
+function my_view_menu() {
+  $items = array();
+  $items['my'] = array(
+    'title' => 'My View',
+    'description' => 'Put some content on fp.',
+    'page callback' => 'my_view_do_it',
+    /*'page arguments' => array('cmi_ebr_create_form'),*/
+    'access callback' => true,
+    );
+  return $items;
+}
+
+/**
+ * page callback
+ */
+function my_view_do_it() {
+  $view = views_get_view('fp');
+  $my_dis = 'block';
+  return $view->preview('block');
+}
+
+/**
+ * preprocess my_view
+ */
+/*function my_view_preprocess_views_view(&$vars) {
+  if ($vars['view']->name == 'fp') {
+    drupal_add_css(drupal_get_path('module', 'my_view') . '/css/my.css');
+    if (count($vars['view']->result) < 3) {
+     $vars['rows'] .= <<<HTML
+  <div class="views-row views-row-3 views-row-even views-row-last">
+    <div class="views-field views-field-title">
+      <span class="field-content"><a href="/node/1366">Third thing placeholder.</a></span>
+    </div>
+    <div class="views-field views-field-body">
+      <span class="views-label views-label-body">Body: </span>
+      <div class="field-content"><p>we always want at least three things.</p></div>
+    </div>
+  </div>
+HTML;
+    }
+  }
+}*/
+
+/**
+ * Implements hook_views_api()
+ */
+function my_view_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'my_view'),
+  );
+}
